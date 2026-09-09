@@ -11,15 +11,15 @@ export function ProjectsSection() {
       <Container className="flex flex-col gap-16">
         <SectionHeading
           eyebrow="Selected Work"
-          title="Things I've Built."
+          title="Projects i've built"
           description=""
         />
 
         <FeaturedProject project={featuredProject} />
 
         <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
-          {secondaryProjects.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
+          {secondaryProjects.map((project, index) => (
+            <ProjectCard key={project.slug} project={project} index={index} />
           ))}
         </div>
       </Container>

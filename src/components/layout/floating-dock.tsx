@@ -26,7 +26,7 @@ export function FloatingDock() {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.5, duration: reducedMotion ? 0 : 0.4 }}
-      className="fixed inset-x-0 bottom-2 z-30 flex justify-center px-4"
+      className="fixed inset-x-0 bottom-6 z-30 flex justify-center px-4"
     >
       <div className="no-scrollbar flex max-w-full items-center gap-1 overflow-x-auto rounded-full border border-border bg-card/90 px-2 py-2 shadow-lg backdrop-blur-md">
         {navItems.map((item) => (
@@ -73,11 +73,12 @@ function DockLink({
       rel={external ? "noopener noreferrer" : undefined}
       aria-label={label}
       className={cn(
-        "group relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors duration-fast hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+        "dock-energy-border group relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full transition-colors duration-fast hover:bg-secondary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
         active ? "text-accent" : "text-muted-foreground hover:text-foreground",
       )}
     >
-      <Icon className="h-4 w-4" />
+      <span className="dock-hover-sweep absolute inset-0 overflow-hidden rounded-full" aria-hidden="true" />
+      <Icon className="relative h-4 w-4 transition-transform duration-fast group-hover:-translate-y-0.5" />
       {active && (
         <span className="absolute -bottom-1 h-1 w-1 rounded-full bg-accent" aria-hidden="true" />
       )}
@@ -100,9 +101,10 @@ function DockButton({
       type="button"
       onClick={onClick}
       aria-label={label}
-      className="group relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors duration-fast hover:bg-secondary hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+      className="dock-energy-border group relative flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-muted-foreground transition-colors duration-fast hover:bg-secondary hover:text-accent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background"
     >
-      <Icon className="h-4 w-4" />
+      <span className="dock-hover-sweep absolute inset-0 overflow-hidden rounded-full" aria-hidden="true" />
+      <Icon className="relative h-4 w-4 transition-transform duration-fast group-hover:-translate-y-0.5" />
       <Tooltip label={label} />
     </button>
   );

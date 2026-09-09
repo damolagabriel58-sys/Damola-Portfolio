@@ -3,6 +3,75 @@
 @tailwind utilities;
 
 
+@property --border-angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes dock-border-spin {
+  to {
+    --border-angle: 360deg;
+  }
+}
+
+
+
+  .dock-energy-border {
+    position: relative;
+  }
+
+  .dock-energy-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    padding: 1px;
+    background: conic-gradient(
+      from var(--border-angle),
+      transparent 0%,
+      hsl(var(--accent)) 8%,
+      transparent 16%
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    animation: dock-border-spin 4s linear infinite;
+    pointer-events: none;
+  }
+
+  .dock-hover-sweep::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: linear-gradient(
+      115deg,
+      transparent 30%,
+      hsl(var(--accent) / 0.25) 50%,
+      transparent 70%
+    );
+    background-size: 250% 250%;
+    background-position: -150% -150%;
+    transition: background-position 0.6s ease;
+    pointer-events: none;
+  }
+
+  .dock-hover-sweep:hover::after,
+  .dock-hover-sweep:focus-visible::after {
+    background-position: 150% 150%;
+  }
+
+
+
+    .dock-energy-border::before {
+      animation: none;
+    }
+
+
+
 @layer base {
   :root {
     /* ---- Radius scale ---- */
