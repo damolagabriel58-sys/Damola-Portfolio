@@ -1,4 +1,4 @@
-# Purpose Oluwadahunsi Portfolio
+# Ajayi Oladamola Portfolio
 
 A personal portfolio website for Purpose Oluwadahunsi, focused on AI engineering, machine learning, data science, and full-stack development.
 
